@@ -1,0 +1,48 @@
+{
+    "name": "emeka/sweetEmoji",
+    "description": "Fetcher is a super light weight PHP database driver, that helps you sync and fetch data from any PDO database in your application.",
+    "type": "PHP",
+    "license": "MIT",
+    "authors": 
+    [
+        {
+            "name": "Emeka Osuagwu",
+            "email": "emekaosuagwuandela@gmail.com",
+            "homepage": "https://github.com/andela-eosuagwu/SweetEmoji",
+            "role": "Software Developer"
+        }
+    ],
+    "keywords": [
+        "Sweetemoji"
+    ],
+    "minimum-stability": "dev",
+    "require": 
+    {
+        "php": ">=5.3.0",
+        "slim/slim": "2.*",
+        "vlucas/phpdotenv": "^2.0",
+        "emeka/candy": "dev-master"
+    },
+    "require-dev": 
+    {
+        "phpunit/phpunit" : "4.*"
+    },
+    "autoload": 
+    {
+        "psr-4": 
+        {
+            "Emeka\\SweetEmoji\\": "src"
+        }
+    },
+    "autoload-dev": 
+    {
+        "psr-4": 
+        {
+            "Test\\": "tests/"
+        }
+    },
+    "scripts": 
+    {
+        "test": "phpunit"
+    }
+}
