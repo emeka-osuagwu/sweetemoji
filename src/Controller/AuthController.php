@@ -30,21 +30,26 @@ class AuthController
 			$username = htmlentities(trim($username));
 			$password = htmlentities(trim($password));
 
-			$user = User::where('username', $username);
-				
-			if( $user->password == $password) {
+			$database_user = User::where('username', $username);
+			$database_user = json_decode($database_user, true)[0];
+			
+			if( $database_user['password'] == $password) 
+			{
 				return Auth::deny_access("Incorrect Authentication Details");
 			}
 
-			$responseArray['username'] = $user->username;
-			$responseArray['token'] = bin2hex(openssl_random_pseudo_bytes(16)); //generate a random token
-
-			$tokenExpiration = date('Y-m-d H:i:s', strtotime('+1 hour'));//the expiration date will be in one hour from the current moment
-
-			$updatedUser = $user;
-			$updatedUser->token = $responseArray['token'];
-			$updatedUser->expiry = $tokenExpiration;
-			$updatedUser->save(); 
+			$user = new User;
+			$tokenExpiration 			= date('Y-m-d H:i:s', strtotime('+1 hour'));
+			$responseArray['token'] 	= bin2hex(openssl_random_pseudo_bytes(16));
+			$user->id 			= $database_user['id'];
+			$user->token 		= $responseArray['token'];
+			$user->expiry  		= $tokenExpiration;
+			$user->username 	= $database_user['username'];
+			$user->password 	= $database_user['password'];
+			
+			
+			
+			User::save(); 
 
 			$response->status(200);
 			$response->body(json_encode($responseArray));

@@ -12,28 +12,28 @@ use Emeka\Candy\Model\BaseModel;
 
 use Emeka\SweetEmoji\Model\User;
 use Emeka\SweetEmoji\Model\Emoji;
-use Emeka\SweetEmoji\Controller\EmojiController;
 use Emeka\SweetEmoji\Controller\AuthController;
+use Emeka\SweetEmoji\Middleware\AuthMiddleware;
+use Emeka\SweetEmoji\Controller\EmojiController;
 
 $app = new Slim;
 
-//$authMiddleware = new AuthMiddleware();
-$authController = new AuthController();
-$emojiController = new EmojiController();
+$authController 	= new AuthController();
+$authMiddleware 	= new AuthMiddleware();
+$emojiController 	= new EmojiController();
 
 
-
+$authenticated = function () use ($authMiddleware){
+	$authMiddleware->authenticate();
+};
 
 $app->get('/auth/login', function () use ($authController){
-	echo  $authController->login();
+	$authController->login();
 });
 
-
-
-
-
-
-
+$app->get('/auth/logout', $authenticated, function () use ($authController){
+	$authController->logout();
+});
 
 /*
 | Welcome page
@@ -81,7 +81,7 @@ $app->post('/emojis/:id', function ($id) use ($emojiController){
 | "/emojis/:id" find and delete an emoji by id
 | DELETE method
 */
-$app->delete('/emojis/:id', function ($id) use ($emojiController){
+$app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController){
 	$emojiController->deleteEmoji($id);
 });
 

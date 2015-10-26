@@ -13,3 +13,4 @@ class User extends BaseModel
 		return User::where('token',$token);
 	}
 }
+

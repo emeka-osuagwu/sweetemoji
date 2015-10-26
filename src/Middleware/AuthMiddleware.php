@@ -1,10 +1,10 @@
 <?php
 
-namespace Emeka\Sweetemoji\Middleware;
+namespace Emeka\SweetEmoji\Middleware;
 
 use Slim\Slim;
-use Emeka\EmojiController\Auth\Auth;
-use Emeka\EmojiController\Model\User;
+use Emeka\SweetEmoji\Auth\Auth;
+use Emeka\SweetEmoji\EmojiController\Model\User;
 
 class AuthMiddleware
 {
@@ -26,7 +26,7 @@ class AuthMiddleware
 			$token = htmlentities(trim($token));
 			$user = User::findByToken($token);
 
-			if($user->token_expire < date('Y-m-d H:i:s')) 
+			if($user->expiry < date('Y-m-d H:i:s')) 
 			{
 				return Auth::deny_access("Authorization Token has expired. Please login again.");
 			}
