@@ -22,12 +22,11 @@ $authController 	= new AuthController();
 $authMiddleware 	= new AuthMiddleware();
 $emojiController 	= new EmojiController();
 
-
 $authenticated = function () use ($authMiddleware){
 	$authMiddleware->authenticate();
 };
 
-$app->get('/auth/login', function () use ($authController){
+$app->post('/auth/login', $authenticated, function () use ($authController){
 	$authController->login();
 });
 

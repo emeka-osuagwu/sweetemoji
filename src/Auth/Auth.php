@@ -14,7 +14,6 @@ class Auth
 		$responseArray['error'] = $message;
 		$response->body(json_encode($responseArray));
 		$app->stop();
-
 		return $response;
 	}
 } 

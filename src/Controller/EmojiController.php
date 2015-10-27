@@ -13,8 +13,7 @@ use Emeka\SweetEmoji\Exceptions\ModelNotFoundException;
 
 
 class EmojiController
-{
-
+{acr
 	public function findEmoji($id)
 	{
 		$app = Slim::getInstance();
@@ -90,10 +89,6 @@ class EmojiController
 		$emoji->title = $title;
 		$emoji->image = $image;
 		$emoji->tag = $tag;
-		// $emoji->keywords = $keywords;
-		// $emoji->date_created = date('Y-m-d H:i:s');
-		// $emoji->date_modified = date('Y-m-d H:i:s');
-		// $emoji->created_by = User::findByToken($token)->id;
 		$emoji::save();
 		$responseArray['message'] = "Emoji has been successfully created";
 		$response->status(200);
