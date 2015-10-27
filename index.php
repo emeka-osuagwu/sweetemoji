@@ -39,7 +39,7 @@ $app->get('/auth/logout', $authenticated, function () use ($authController){
 | Welcome page
 */
 $app->get('/', function (){
-	echo "Welcome to Naija Emoji Service";
+	echo "SweetEmoji Emoji";
 });
 
 
