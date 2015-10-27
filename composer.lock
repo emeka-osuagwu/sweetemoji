@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andela-eosuagwu/Candy.git",
-                "reference": "7048c77c9dc6468db29597ee580798aa7890ccef"
+                "reference": "4d30667d8030f297e0ee437f40b612a06d4e2fbc"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andela-eosuagwu/Candy/zipball/7048c77c9dc6468db29597ee580798aa7890ccef",
-                "reference": "7048c77c9dc6468db29597ee580798aa7890ccef",
+                "url": "https://api.github.com/repos/andela-eosuagwu/Candy/zipball/4d30667d8030f297e0ee437f40b612a06d4e2fbc",
+                "reference": "4d30667d8030f297e0ee437f40b612a06d4e2fbc",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                     "role": "Software Developer"
                 }
             ],
-            "time": "2015-10-27 09:36:21"
+            "time": "2015-10-27 19:24:44"
         },
         {
             "name": "nesbot/carbon",
