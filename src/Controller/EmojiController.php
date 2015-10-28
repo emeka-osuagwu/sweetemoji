@@ -13,7 +13,7 @@ use Emeka\SweetEmoji\Exceptions\ModelNotFoundException;
 
 
 class EmojiController
-{acr
+{
 	public function findEmoji($id)
 	{
 		$app = Slim::getInstance();
