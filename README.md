@@ -20,7 +20,7 @@ for Nigerians. The API uses simple token based authentication and is developed
 - To install this package, PHP 5.5.9+ and Composer are required
 
 ````bash
-composer require bendozy/naijaemoji
+composer require emeka/sweetemoji
 ``````
 
 ## Usage
@@ -37,7 +37,7 @@ Please refer to [CHANGELOG](CHANGELOG.mds) file for information on what has chan
 Please check out [CONTRIBUTING](CONTRIBUTING.md) file for detailed contribution guidelines.
 
 ## Credits
-Simple ORM is maintained by [Chidozie Ijeomah](https://github.com/andela-cijeomah).
+Simple ORM is maintained by [Emeka Osuagwu](https://github.com/andela-eosuagwu).
 
 ## License
 Simple ORM is released under the MIT Licence. See the bundled [LICENSE](LICENSE.md) file for details.
