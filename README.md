@@ -1,6 +1,6 @@
 [![Build Status](https://travis-ci.org/andela-cijeomah/naijaemoji.svg?branch=master)](https://travis-ci.org/andela-cijeomah/naijaemoji)
 #SweetEmoji
-NaijaEmoji is RESTful API for CRUD operations on the common emojis reimagined
+SweetEmoji is RESTful API for CRUD operations on the common emojis reimagined
 for Nigerians. The API uses simple token based authentication and is developed
 [The PHP League way](https://thephpleague.com/)
 
