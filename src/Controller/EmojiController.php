@@ -151,4 +151,5 @@ class EmojiController
 			"created_by" => User::find($emoji->created_by)->username
 		];
 	}
+	
 } 
