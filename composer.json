@@ -35,11 +35,12 @@
             "Emeka\\SweetEmoji\\": "src"
         }
     },
-    "autoload-dev": 
-    {
-        "psr-4": 
-        {
-            "Test\\": "tests/"
+    "autoload-dev": {
+        "classmap": [
+            "spec/"
+        ],
+        "psr-4": {
+            "Emeka\\Sweetemoji\\Tests\\": "spec/"
         }
     },
     "scripts": 
