@@ -1,4 +1,6 @@
 
 /.idea
 /vendor
-.create
+/build
+create.php
+/keep

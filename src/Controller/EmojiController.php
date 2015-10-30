@@ -28,7 +28,11 @@ class EmojiController
 		catch(PDOException $e) 
 		{
 			$response->status(404);
-			$response->body(json_encode(['error' => 'Emoji not found for the given id']));
+			$response->body(json_encode(
+			[
+				'status' => 401,
+				'error' => 'Emoji not found for the given id'
+			]));
 		}
 		return $response;
 	}
@@ -90,7 +94,9 @@ class EmojiController
 		$emoji->image = $image;
 		$emoji->tag = $tag;
 		$emoji::save();
-		$responseArray['message'] = "Emoji has been successfully created";
+		$responseArray['status'] 	= "Emoji has been successfully created";
+		$responseArray['message'] 	= 200;
+		
 		$response->status(200);
 		$response->body(json_encode($responseArray));
 		return $response;
@@ -126,7 +132,8 @@ class EmojiController
 			}
 			$emoji::save();
 
-			$responseArray['message'] = "Emoji has been successfully updated";
+			$responseArray['status'] 	= 200;
+			$responseArray['message'] 	= "Emoji has been successfully updated";
 			$response->status(200);
 			$response->body(json_encode($responseArray));
 

@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ad3ad0b428d3a2076cc03893e0811758",
-    "content-hash": "2e2e90716701a45535dd256ca4f9850b",
+    "hash": "2b4c876f7954bc5992ea92bbbfa72881",
+    "content-hash": "db7f08e432ded88a75d23cb27f83c896",
     "packages": [
         {
             "name": "emeka/candy",
@@ -13,12 +13,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/andela-eosuagwu/Candy.git",
-                "reference": "4d30667d8030f297e0ee437f40b612a06d4e2fbc"
+                "reference": "20256e19c044887d4b894d90b25f1d00efadd782"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/andela-eosuagwu/Candy/zipball/4d30667d8030f297e0ee437f40b612a06d4e2fbc",
-                "reference": "4d30667d8030f297e0ee437f40b612a06d4e2fbc",
+                "url": "https://api.github.com/repos/andela-eosuagwu/Candy/zipball/20256e19c044887d4b894d90b25f1d00efadd782",
+                "reference": "20256e19c044887d4b894d90b25f1d00efadd782",
                 "shasum": ""
             },
             "require": {
@@ -50,7 +50,7 @@
                     "role": "Software Developer"
                 }
             ],
-            "time": "2015-10-27 19:24:44"
+            "time": "2015-10-29 10:02:28"
         },
         {
             "name": "nesbot/carbon",
@@ -146,21 +146,78 @@
             "time": "2015-10-09 07:51:59"
         },
         {
+            "name": "symfony/polyfill-mbstring",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/polyfill-mbstring.git",
+                "reference": "82159e61debcd09790b20154b350b1c083029aa6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/polyfill-mbstring/zipball/82159e61debcd09790b20154b350b1c083029aa6",
+                "reference": "82159e61debcd09790b20154b350b1c083029aa6",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Symfony\\Polyfill\\Mbstring\\": ""
+                },
+                "files": [
+                    "bootstrap.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Nicolas Grekas",
+                    "email": "p@tchwork.com"
+                },
+                {
+                    "name": "Symfony Community",
+                    "homepage": "https://symfony.com/contributors"
+                }
+            ],
+            "description": "Symfony polyfill for the Mbstring extension",
+            "homepage": "https://symfony.com",
+            "keywords": [
+                "compatibility",
+                "mbstring",
+                "polyfill",
+                "portable",
+                "shim"
+            ],
+            "time": "2015-10-27 22:54:43"
+        },
+        {
             "name": "symfony/translation",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/translation.git",
-                "reference": "e7c5fcb19d991da3894858bb4d4775be57094eda"
+                "reference": "bb832748275919aeae43455d9a25fa1e5ece1cc8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/translation/zipball/e7c5fcb19d991da3894858bb4d4775be57094eda",
-                "reference": "e7c5fcb19d991da3894858bb4d4775be57094eda",
+                "url": "https://api.github.com/repos/symfony/translation/zipball/bb832748275919aeae43455d9a25fa1e5ece1cc8",
+                "reference": "bb832748275919aeae43455d9a25fa1e5ece1cc8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.5.9"
+                "php": ">=5.5.9",
+                "symfony/polyfill-mbstring": "~1.0"
             },
             "conflict": {
                 "symfony/config": "<2.8"
@@ -203,7 +260,7 @@
             ],
             "description": "Symfony Translation Component",
             "homepage": "https://symfony.com",
-            "time": "2015-10-11 09:14:55"
+            "time": "2015-10-29 12:12:54"
         },
         {
             "name": "vlucas/phpdotenv",
@@ -211,12 +268,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/vlucas/phpdotenv.git",
-                "reference": "4c619d36c7158138ef22b1066f836043629297d7"
+                "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/4c619d36c7158138ef22b1066f836043629297d7",
-                "reference": "4c619d36c7158138ef22b1066f836043629297d7",
+                "url": "https://api.github.com/repos/vlucas/phpdotenv/zipball/c10040e0df17d2ee88e9212b50cbe9319e878f59",
+                "reference": "c10040e0df17d2ee88e9212b50cbe9319e878f59",
                 "shasum": ""
             },
             "require": {
@@ -254,7 +311,7 @@
                 "env",
                 "environment"
             ],
-            "time": "2015-08-18 21:06:42"
+            "time": "2015-10-28 18:53:35"
         }
     ],
     "packages-dev": [
@@ -359,22 +416,22 @@
         },
         {
             "name": "mockery/mockery",
-            "version": "dev-master",
+            "version": "0.9.4",
             "source": {
                 "type": "git",
                 "url": "https://github.com/padraic/mockery.git",
-                "reference": "ee88cd05073533b10678772fe954d042748393c3"
+                "reference": "70bba85e4aabc9449626651f48b9018ede04f86b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/padraic/mockery/zipball/ee88cd05073533b10678772fe954d042748393c3",
-                "reference": "ee88cd05073533b10678772fe954d042748393c3",
+                "url": "https://api.github.com/repos/padraic/mockery/zipball/70bba85e4aabc9449626651f48b9018ede04f86b",
+                "reference": "70bba85e4aabc9449626651f48b9018ede04f86b",
                 "shasum": ""
             },
             "require": {
                 "hamcrest/hamcrest-php": "~1.1",
                 "lib-pcre": ">=7.0",
-                "php": ">=5.4.0"
+                "php": ">=5.3.2"
             },
             "require-dev": {
                 "phpunit/phpunit": "~4.0"
@@ -382,7 +439,7 @@
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "1.0.x-dev"
+                    "dev-master": "0.9.x-dev"
                 }
             },
             "autoload": {
@@ -420,7 +477,7 @@
                 "test double",
                 "testing"
             ],
-            "time": "2015-10-12 06:21:09"
+            "time": "2015-04-02 19:54:00"
         },
         {
             "name": "phpdocumentor/reflection-docblock",
@@ -773,16 +830,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.x-dev",
+            "version": "4.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e"
+                "reference": "283111a903eb9225aedb95e846bef876e006a688"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/625f8c345606ed0f3a141dfb88f4116f0e22978e",
-                "reference": "625f8c345606ed0f3a141dfb88f4116f0e22978e",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/283111a903eb9225aedb95e846bef876e006a688",
+                "reference": "283111a903eb9225aedb95e846bef876e006a688",
                 "shasum": ""
             },
             "require": {
@@ -841,7 +898,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2015-10-23 06:48:33"
+            "time": "2015-08-07 03:57:43"
         },
         {
             "name": "phpunit/phpunit-mock-objects",
@@ -1277,12 +1334,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/yaml.git",
-                "reference": "8d32eb597b531eb915b4fee3dc582ade5ae1fe6a"
+                "reference": "027120898d49f642f9e71b06efcd2560b5a9bb09"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/yaml/zipball/8d32eb597b531eb915b4fee3dc582ade5ae1fe6a",
-                "reference": "8d32eb597b531eb915b4fee3dc582ade5ae1fe6a",
+                "url": "https://api.github.com/repos/symfony/yaml/zipball/027120898d49f642f9e71b06efcd2560b5a9bb09",
+                "reference": "027120898d49f642f9e71b06efcd2560b5a9bb09",
                 "shasum": ""
             },
             "require": {
@@ -1315,7 +1372,7 @@
             ],
             "description": "Symfony Yaml Component",
             "homepage": "https://symfony.com",
-            "time": "2015-10-13 16:01:35"
+            "time": "2015-10-29 12:12:54"
         }
     ],
     "aliases": [],

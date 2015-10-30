@@ -13,35 +13,6 @@
 <body>
  <div class="container">
   <h2>Usage</h2>
-     <span>
-         Example POST request to the register route
-        <pre>
-            <code class="php">
-                POST https://naijaemoji.herokuapp.com/register
-                Request body:
-                {
-                    'username' : 'johndoe',
-                    'password' : 'password',
-                    'names'    :  'John Doe'
-                }
-            </code>
-        </pre>
-        The response to the following request includes the message,
-        the response status code and some other data.
-
-        On successful registration, the following json response will be returned
-
-        <pre>
-            <code class="php">
-                Response body:
-                {
-                    'username'  : 'johndoe',
-                    'password'  : 'someEncryptedString',
-                    'message'   : 'Registration succesful'
-                }
-            </code>
-        </pre>
-     </span>
 
 
 
@@ -49,7 +20,7 @@
         Example POST request to the login route
         <pre>
           <code class="php">
-            POST https://naijaemoji.herokuapp.com/auth/login
+            POST https://sweetemoji.herokuapp.com/auth/login
 
             Request Body:
             {
@@ -72,8 +43,7 @@
          <code class="php">
             Response Body:
             {
-                'token'  : 'SomeRandomToken',
-                'message' : 'token expiry set'
+                'token'  : 'SomeRandomToken'
             }
          </code>
        </pre>
@@ -85,7 +55,7 @@
       GET request to the logout route
       <pre>
         <code class="php">
-         GET https://naijaemoji.herokuapp.com/auth/logout
+         GET https://sweetemoji.herokuapp.com/auth/logout
 
           Request Body:
           {
@@ -113,18 +83,16 @@
     </span>
 
     <span>
-     TO save an Emoji, a POST request has to be made to <pre><code class="html">https://naijaemoji.herokuapp.com/emojis</code></pre>
+     TO save an Emoji, a POST request has to be made to <pre><code class="html">https://sweetemoji.herokuapp.com/emojis</code></pre>
      Like so:
      <pre>
         <code class="php">
-         POST https://naijaemoji.herokuapp.com/emojis
+         POST https://sweetemoji.herokuapp.com/emojis
          Request Body:
          {
-            'emojiname' : 'someName',
-            'emojichar' : 'someUTF-8String',
-            'category'  : 'someCategory',
-            'keywords'  : 'someKeywords',
-            'created_by': 'userId'
+            'tag'   : 'tags',
+            'title' : 'someName',
+            'image' : 'happyface.png',
          }
         </code>
      </pre>
@@ -146,7 +114,7 @@
      To get all emojis, a GET request should be sent to
      <pre>
          <code class="php">
-             https://naijaemoji.herokuapp.com/emojis
+             https://sweetemoji.herokuapp.com/emojis
          </code>
      </pre>
       This route is not protected and does not need an authorization header.
@@ -154,7 +122,7 @@
       Example:
       <pre>
         <code class="php">
-            GET https://naijaemoji.herokuapp.com/emojis
+            GET https://sweetemoji.herokuapp.com/emojis
         </code>
       </pre>
 
@@ -165,19 +133,17 @@
 
          [
             {
-                'emojiname' : 'smiley',
-                'emojichar' : 'SomeEmoji',
-                'category'  : 'emoticons',
-                'keywords'  : 'smile, face',
-                'created_by' : 234,
+                'id'            : 1,
+                'tag'           : 'smile, face, happy',
+                'title'         : 'smile',
+                'image'         : 'happyface.png',
             },
 
             {
-                'emojiname' : 'dancer',
-                'emojichar' : 'SomeEmoji',
-                'category'  : 'people',
-                'keywords'  : 'girl, dance',
-                'created_by :  12
+                'id'            : 2,
+                'tag'           : 'sad, face, cry',
+                'title'         : 'sad',
+                'image'         : 'sadface.png',
             }
          ]
         </code>
@@ -188,23 +154,22 @@
       To edit an emoji send a  PUT request to
        <pre>
         <code class="php">
-            https://naijaemoji.herokuapp.com/emojis/{id}
+            https://sweetemoji.herokuapp.com/emojis/{id}
         </code>
        </pre>
 
         Example:
         <pre>
          <code class="php">
-           PUT https://naijaemoji.herokuapp.com/emojis/1
+           PUT https://sweetemoji.herokuapp.com/emojis/1
 
            Request Body
             {
-                'id'        : 1,
-                'emojiname' : 'someName',
-                'emojichar' : 'someUTF-8String',
-                'categories': 'someCategory',
-                'keywords'  : 'someKeywords'
-            }
+                'id'            : 1,
+                'tag'           : 'smile, face, happy',
+                'title'         : 'smile',
+                'image'         : 'happyface.png',
+            },
          </code>
         </pre>
 
@@ -226,14 +191,14 @@
        To delete an Emoji, send a DELETE request to
        <pre>
            <code class="php">
-                https://naijaemoji.herokuapp.com/emojis/{id}
+                https://sweetemoji.herokuapp.com/emojis/{id}
            </code>
        </pre>
 
         Example:
         <pre>
             <code class="php">
-            DELETE https://naijaemoji.herokuapp.com/emojis/1
+            DELETE https://sweetemoji.herokuapp.com/emojis/1
 
             Request Body:
             {
