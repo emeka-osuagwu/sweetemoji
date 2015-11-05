@@ -173,23 +173,5 @@ class EmojiController
 			"date_modified" => $emoji->date_modified,
 			"created_by" => User::find($emoji->created_by)->username
 		];
-	}
-	
+	}	
 } 
-
-
-
-
-
-		// try 
-		// {
-		// 	$token = $request->headers->get('Authorization');
-		// 	$key 	= "example_key";
-		// 	$decoded_jwt 	= JWT::decode($token, $key, array('HS512'));
-		// 	$decoded_jwt 	= (object) $decoded_jwt;
-		// 	$user 			= User::where('username', $decoded_jwt->data->username);
-		// } 
-		// catch(ModelNotFoundException $e) 
-		// {
-		// 	return Auth::deny_access("Authorization Token is invalid.");
-		// }

@@ -17,6 +17,41 @@
 
 
      <span>
+        Example POST request to the register route
+        <pre>
+          <code class="php">
+            POST https://sweetemoji.herokuapp.com/auth/register
+
+            Request Body:
+            {
+            'username' : 'johndoe',
+            'password' : 'password',
+            }
+          </code>
+        </pre>
+     </span>
+
+
+    <span>
+        Upon successful register, a Json object is return containing the
+        status code, the token generated, the token expiry and the success
+        message. A response header containing the 'Authorization' token is
+        is also set. This token is required, as an 'Authorization' header
+        to access all protected routes.
+
+       <pre>
+         <code class="php">
+            Response Body:
+                {
+                  "status": 200,
+                  "massage": "Registration Successful"
+                }
+         </code>
+       </pre>
+    </span>
+
+
+     <span>
         Example POST request to the login route
         <pre>
           <code class="php">

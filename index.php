@@ -16,7 +16,7 @@ use Emeka\SweetEmoji\Controller\EmojiController;
 $app = new Slim;
 $authController     = new AuthController($app);
 $authMiddleware     = new AuthMiddleware($app);
-$userController    = new UserController($app);
+$userController    	= new UserController($app);
 $emojiController    = new EmojiController($app);
 
 $authenticated = function () use ($authMiddleware){
@@ -77,22 +77,27 @@ $app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController
 
 
 
-
+/*
+| login
+*/
 $app->get('/auth/login', function () use ($authController){
     $authController->login();
 });
 
+
+/*
+| logout
+*/
 $app->get('/auth/logout', $authenticated, function () use ($authController){
     $authController->logout();
 });
 
+
+/*
+| register
+*/
 $app->post('/auth/register', function () use ($userController){
     $userController->register();
 });
-
-
-
-
-
 
 $app->run();

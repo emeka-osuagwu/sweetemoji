@@ -3,7 +3,7 @@
 namespace Emeka\SweetEmoji\Controller;
 
 use Slim\Slim;
-use \Firebase\JWT\JWT;
+use Firebase\JWT\JWT;
 use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
 use Emeka\ORM\Exceptions\ModelNotFoundException;
@@ -33,10 +33,11 @@ class AuthController
 			return Auth::deny_access("Password is null");
 		}
 
-		$username = htmlentities(trim($username));
-		$password = htmlentities(trim($password));
-		$database_user = User::where('username', $username);
-		$database_user =  json_decode($database_user, true);
+		$username 		= htmlentities(trim($username));
+		$password 		= htmlentities(trim($password));
+		$database_user 	= User::where('username', $username);
+		$database_user 	=  json_decode($database_user, true);
+		
 		if ( empty($database_user) ) 
 		{
 			return [
@@ -99,5 +100,4 @@ class AuthController
 
 		return $response;
 	}
-
 } 
