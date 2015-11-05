@@ -10,26 +10,19 @@ use Emeka\SweetEmoji\Model\User;
 use Emeka\SweetEmoji\Model\Emoji;
 use Emeka\SweetEmoji\Controller\AuthController;
 use Emeka\SweetEmoji\Middleware\AuthMiddleware;
+use Emeka\SweetEmoji\Controller\UserController;
 use Emeka\SweetEmoji\Controller\EmojiController;
 
 $app = new Slim;
 $authController     = new AuthController($app);
 $authMiddleware     = new AuthMiddleware($app);
+$userController    = new UserController($app);
 $emojiController    = new EmojiController($app);
-
-
 
 $authenticated = function () use ($authMiddleware){
     $authMiddleware->authenticate();
 };
 
-$app->get('/auth/login', function () use ($authController){
-    $authController->login();
-});
-
-$app->get('/auth/logout', $authenticated, function () use ($authController){
-    $authController->logout();
-});
 
 /*
 | Welcome page
@@ -37,7 +30,6 @@ $app->get('/auth/logout', $authenticated, function () use ($authController){
 $app->get('/', function (){
     echo "SweetEmoji Emoji";
 });
-
 
 /*
 | "/emojis" get all emoji from the database
@@ -82,6 +74,25 @@ $app->post('/emojis/:id', function ($id) use ($emojiController){
 $app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController){
     $emojiController->deleteEmoji($id);
 });
+
+
+
+
+$app->get('/auth/login', function () use ($authController){
+    $authController->login();
+});
+
+$app->get('/auth/logout', $authenticated, function () use ($authController){
+    $authController->logout();
+});
+
+$app->post('/auth/register', function () use ($userController){
+    $userController->register();
+});
+
+
+
+
 
 
 $app->run();
