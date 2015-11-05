@@ -13,7 +13,7 @@ use Emeka\SweetEmoji\Middleware\AuthMiddleware;
 use Emeka\SweetEmoji\Controller\UserController;
 use Emeka\SweetEmoji\Controller\EmojiController;
 
-$app = new Slim;
+$app 				= new Slim;
 $authController     = new AuthController($app);
 $authMiddleware     = new AuthMiddleware($app);
 $userController    	= new UserController($app);
