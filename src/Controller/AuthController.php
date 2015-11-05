@@ -3,67 +3,83 @@
 namespace Emeka\SweetEmoji\Controller;
 
 use Slim\Slim;
+use \Firebase\JWT\JWT;
 use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
 use Emeka\ORM\Exceptions\ModelNotFoundException;
 
 class AuthController
 {
+
+	public function __construct($app)
+	{
+		$this->app = $app;
+	}
+
 	public function login()
 	{
-		$app = Slim::getInstance();
-		$response = $app->response();
+		$response = $this->app->response();
 		$response->header("Content-Type", "application/json");
-		$username = $app->request()->params('username');
-		$password = $app->request()->params('password');
+		$username = $this->app->request()->params('username');
+		$password = $this->app->request()->params('password');
 
 		if( ! isset($username) ) 
 		{
 			return Auth::deny_access("Username is null");
 		}
 
-		if(! isset($password)) 
+		if( ! isset($password)) 
 		{
 			return Auth::deny_access("Password is null");
 		}
 
-		try 
+		$username = htmlentities(trim($username));
+		$password = htmlentities(trim($password));
+		$database_user = User::where('username', $username);
+		$database_user =  json_decode($database_user, true);
+		if ( empty($database_user) ) 
 		{
-			$username = htmlentities(trim($username));
-			$password = htmlentities(trim($password));
+			return [
+				'status' 	=> 400,
+				'message' 	=> 'username doesn\'t'
+			];	
+		}
 
-			$database_user = User::where('username', $username);
-			$database_user = json_decode($database_user, true)[0];
-			
-			if( $database_user['password'] == $password) 
-			{
-				return Auth::deny_access("Incorrect Authentication Details");
-			}
+		$database_user =  $database_user[0];
+		
+		if( $database_user['password'] == $password ) 
+		{
 
-			$user = new User;
-			$tokenExpiration 			= date('Y-m-d H:i:s', strtotime('+1 hour'));
-			$responseArray['token'] 	= bin2hex(openssl_random_pseudo_bytes(16));
-			$user->id 			= $database_user['id'];
-			$user->token 		= $responseArray['token'];
-			$user->expiry  		= $tokenExpiration;
-			$user->username 	= $database_user['username'];
-			$user->password 	= $database_user['password'];
-			
-			
-			
-			User::save(); 
+			$key 	= "example_key";
+			$token 	= 
+			[
+				"nbf"	=> 1357000000,
+				"iat"	=> 1356999524,
+				"exp"	=> time() + 3600,
+				"iss"	=> $_SERVER['SERVER_NAME'],
+				"data"	=> 
+				[
+					"username"	=> $database_user['username']
+				]
+			];
+			$encode_jwt 	= JWT::encode($token, $key, 'HS512');
+			$responseArray 	= 
+			[
+				"token"		=> $encode_jwt,
+				"status" 	=> 200
+			];
 
 			$response->status(200);
 			$response->body(json_encode($responseArray));
-		} 
-		catch(ModelNotFoundException $e) 
-		{
-			$response = Auth::deny_access("Incorrect Authentication Details");
+			return $response;
 		}
 
-		return $response;
+		else 
+		{
+			return Auth::deny_access("Incorrect Authentication Details");
+		}
 	}
-
+	
 	public function logout()
 	{
 		$app = Slim::getInstance();

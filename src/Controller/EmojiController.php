@@ -4,6 +4,7 @@ namespace Emeka\SweetEmoji\Controller;
 
 use Slim\Slim;
 use PDOException;
+use Firebase\JWT\JWT;
 use Slim\Http\Response;
 use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
@@ -14,6 +15,11 @@ use Emeka\SweetEmoji\Exceptions\ModelNotFoundException;
 
 class EmojiController
 {
+	public function __construct($app)
+	{
+		$this->app = $app;
+	}
+	
 	public function findEmoji($id)
 	{
 		$app = Slim::getInstance();
@@ -67,12 +73,12 @@ class EmojiController
 
 	public function addEmoji()
 	{
-		$app = Slim::getInstance();
-		$request = $app->request();
-		$token = $request->headers->get('Authorization');
-		$tag = $request->params('tag');
-		$title = $request->params('title');
-		$image = $request->params('image');
+		$app 		= $this->app;
+		$request 	= $app->request();
+		$token 		= $request->headers->get('Authorization');
+		$tag 		= $request->params('tag');
+		$title 		= $request->params('title');
+		$image 		= $request->params('image');
 		
 		if(! isset($title)) {
 			return Auth::deny_access("Emoji name is null");
@@ -88,18 +94,26 @@ class EmojiController
 
 		$response = $app->response();
 		$response->header("Content-Type", "application/json");
+		$token 			= $request->headers->get('Authorization');
+		$key 			= "example_key";
+		$decoded_jwt 	= JWT::decode($token, $key, array('HS512'));
+		$decoded_jwt 	= (object) $decoded_jwt;
+		$user 			= User::where('username', $decoded_jwt->data->username);
 
-		$emoji = new Emoji;
-		$emoji->title = $title;
-		$emoji->image = $image;
-		$emoji->tag = $tag;
-		$emoji::save();
-		$responseArray['status'] 	= "Emoji has been successfully created";
-		$responseArray['message'] 	= 200;
-		
-		$response->status(200);
-		$response->body(json_encode($responseArray));
-		return $response;
+		if (  count($user) > 0 ) 		
+		{
+			$responseArray['status'] 	= "Emoji has been successfully created";
+			$responseArray['message']	= 200; 	
+			$response->status(200);
+			$response->body(json_encode($responseArray));
+			$emoji = new Emoji;
+			$emoji->title = $title;
+			$emoji->image = $image;
+			$emoji->tag = $tag;
+			$emoji::save();
+			return $response;
+		}
+		return "Invalid User";	
 	}
 
 	public function updateEmoji($id)
@@ -113,10 +127,12 @@ class EmojiController
 		$image = $request->params('image');
 		
 
-		try {
-			$emoji = new Emoji;
-			$emoji->id = $id;
-			if(isset($tag)) 
+		try 
+		{
+			$emoji 		= new Emoji;
+			$emoji->id 	= $id;
+			
+			if( isset ( $tag ) ) 
 			{
 				$emoji->tag = $tag;
 			}
@@ -130,8 +146,8 @@ class EmojiController
 			{
 				$emoji->title = $title;
 			}
-			$emoji::save();
 
+			$emoji::save();
 			$responseArray['status'] 	= 200;
 			$responseArray['message'] 	= "Emoji has been successfully updated";
 			$response->status(200);
@@ -160,3 +176,20 @@ class EmojiController
 	}
 	
 } 
+
+
+
+
+
+		// try 
+		// {
+		// 	$token = $request->headers->get('Authorization');
+		// 	$key 	= "example_key";
+		// 	$decoded_jwt 	= JWT::decode($token, $key, array('HS512'));
+		// 	$decoded_jwt 	= (object) $decoded_jwt;
+		// 	$user 			= User::where('username', $decoded_jwt->data->username);
+		// } 
+		// catch(ModelNotFoundException $e) 
+		// {
+		// 	return Auth::deny_access("Authorization Token is invalid.");
+		// }

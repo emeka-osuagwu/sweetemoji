@@ -13,15 +13,17 @@ use Emeka\SweetEmoji\Middleware\AuthMiddleware;
 use Emeka\SweetEmoji\Controller\EmojiController;
 
 $app = new Slim;
-$authController     = new AuthController();
-$authMiddleware     = new AuthMiddleware();
-$emojiController    = new EmojiController();
+$authController     = new AuthController($app);
+$authMiddleware     = new AuthMiddleware($app);
+$emojiController    = new EmojiController($app);
+
+
 
 $authenticated = function () use ($authMiddleware){
     $authMiddleware->authenticate();
 };
 
-$app->post('/auth/login', function () use ($authController){
+$app->get('/auth/login', function () use ($authController){
     $authController->login();
 });
 
@@ -41,7 +43,7 @@ $app->get('/', function (){
 | "/emojis" get all emoji from the database
 | GET method
 */
-$app->get('/emojis', function () use ($emojiController){
+$app->get('/emojis', $authenticated ,function () use ($emojiController){
     $emojiController->all();
 });
 
@@ -50,8 +52,8 @@ $app->get('/emojis', function () use ($emojiController){
 | "/emojis" create new emoji
 | PUT method
 */
-$app->post('/emojis', function () use ($emojiController){
-    $emojiControlelr->addEmoji();
+$app->post('/emojis', $authenticated, $authenticated, function () use ($emojiController){
+    $emojiController->addEmoji();
 });
 
 
@@ -59,7 +61,7 @@ $app->post('/emojis', function () use ($emojiController){
 | "/emojis" create new emoji
 | PATCH method
 */
-$app->post('/emojis/:id', function ($id) use ($emojiController){
+$app->post('/emojis/:id', $authenticated, function ($id) use ($emojiController){
     $emojiController->updateEmoji($id);
 });
 

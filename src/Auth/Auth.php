@@ -10,8 +10,8 @@ class Auth
 	{
 		$app = Slim::getInstance();
 		$response = $app->response();
-		$response->status(401);
 		$responseArray['error'] = $message;
+		$responseArray['status'] = $response->status(401);
 		$response->body(json_encode($responseArray));
 		$app->stop();
 		return $response;
