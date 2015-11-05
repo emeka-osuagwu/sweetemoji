@@ -13,27 +13,27 @@ use Emeka\SweetEmoji\Middleware\AuthMiddleware;
 use Emeka\SweetEmoji\Controller\EmojiController;
 
 $app = new Slim;
-$authController 	= new AuthController();
-$authMiddleware 	= new AuthMiddleware();
-$emojiController 	= new EmojiController();
+$authController     = new AuthController();
+$authMiddleware     = new AuthMiddleware();
+$emojiController    = new EmojiController();
 
 $authenticated = function () use ($authMiddleware){
-	$authMiddleware->authenticate();
+    $authMiddleware->authenticate();
 };
 
 $app->post('/auth/login', function () use ($authController){
-	$authController->login();
+    $authController->login();
 });
 
-$app->post('/auth/logout', $authenticated, function () use ($authController){
-	$authController->logout();
+$app->get('/auth/logout', $authenticated, function () use ($authController){
+    $authController->logout();
 });
 
 /*
 | Welcome page
 */
 $app->get('/', function (){
-	echo "SweetEmoji Emoji";
+    echo "SweetEmoji Emoji";
 });
 
 
@@ -42,7 +42,7 @@ $app->get('/', function (){
 | GET method
 */
 $app->get('/emojis', function () use ($emojiController){
-	$emojiController->all();
+    $emojiController->all();
 });
 
 
@@ -50,8 +50,8 @@ $app->get('/emojis', function () use ($emojiController){
 | "/emojis" create new emoji
 | PUT method
 */
-$app->put('/emojis', function () use ($emojiController){
-	$emojiController->addEmoji();
+$app->post('/emojis', function () use ($emojiController){
+    $emojiControlelr->addEmoji();
 });
 
 
@@ -59,8 +59,8 @@ $app->put('/emojis', function () use ($emojiController){
 | "/emojis" create new emoji
 | PATCH method
 */
-$app->patch('/emojis/:id', function ($id) use ($emojiController){
-	$emojiController->updateEmoji($id);
+$app->post('/emojis/:id', function ($id) use ($emojiController){
+    $emojiController->updateEmoji($id);
 });
 
 
@@ -69,7 +69,7 @@ $app->patch('/emojis/:id', function ($id) use ($emojiController){
 | POST method
 */
 $app->post('/emojis/:id', function ($id) use ($emojiController){
-	$emojiController->findEmoji($id);
+    $emojiController->findEmoji($id);
 });
 
 
@@ -78,7 +78,7 @@ $app->post('/emojis/:id', function ($id) use ($emojiController){
 | DELETE method
 */
 $app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController){
-	$emojiController->deleteEmoji($id);
+    $emojiController->deleteEmoji($id);
 });
 
 

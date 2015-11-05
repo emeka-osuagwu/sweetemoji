@@ -14,19 +14,21 @@ class AuthController
 		$app = Slim::getInstance();
 		$response = $app->response();
 		$response->header("Content-Type", "application/json");
-
 		$username = $app->request()->params('username');
 		$password = $app->request()->params('password');
 
-		if( ! isset($username) ) {
+		if( ! isset($username) ) 
+		{
 			return Auth::deny_access("Username is null");
 		}
 
-		if(! isset($password)) {
+		if(! isset($password)) 
+		{
 			return Auth::deny_access("Password is null");
 		}
 
-		try {
+		try 
+		{
 			$username = htmlentities(trim($username));
 			$password = htmlentities(trim($password));
 
@@ -53,8 +55,9 @@ class AuthController
 
 			$response->status(200);
 			$response->body(json_encode($responseArray));
-
-		} catch(ModelNotFoundException $e) {
+		} 
+		catch(ModelNotFoundException $e) 
+		{
 			$response = Auth::deny_access("Incorrect Authentication Details");
 		}
 
