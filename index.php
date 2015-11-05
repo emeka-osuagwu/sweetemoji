@@ -43,7 +43,7 @@ $app->get('/', function (){
 | "/emojis" get all emoji from the database
 | GET method
 */
-$app->get('/emojis', $authenticated ,function () use ($emojiController){
+$app->get('/emojis', function () use ($emojiController){
     $emojiController->all();
 });
 
