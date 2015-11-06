@@ -42,7 +42,7 @@ $app->get('/emojis', function () use ($emojiController){
 /*
 | "/emojis" create new emoji
 */
-$app->post('/emojis', $authenticated, function () use ($emojiController){
+$app->put('/emojis', $authenticated, function () use ($emojiController){
     $emojiController->addEmoji();
 });
 
@@ -50,7 +50,7 @@ $app->post('/emojis', $authenticated, function () use ($emojiController){
 /*
 | "/emojis" update emoji
 */
-$app->put('/emojis/:id', $authenticated, function ($id) use ($emojiController){
+$app->patch('/emojis/:id', $authenticated, function ($id) use ($emojiController){
     $emojiController->updateEmoji($id);
 });
 
