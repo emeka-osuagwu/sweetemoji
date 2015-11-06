@@ -53,7 +53,7 @@ $app->post('/emojis', $authenticated, $authenticated, function () use ($emojiCon
 | "/emojis" create new emoji
 | PATCH method
 */
-$app->post('/emojis/:id', $authenticated, function ($id) use ($emojiController){
+$app->put('/emojis/:id', $authenticated, function ($id) use ($emojiController){
     $emojiController->updateEmoji($id);
 });
 
