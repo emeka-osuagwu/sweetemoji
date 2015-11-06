@@ -48,7 +48,7 @@ class AuthController
 
 		$database_user =  $database_user[0];
 		
-		if( $database_user['password'] == $password ) 
+		if( $database_user['password'] == md5($password) ) 
 		{
 
 			$key 	= "example_key";

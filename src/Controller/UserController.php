@@ -41,7 +41,7 @@ class UserController
 		{
 			$user = new User;
 			$user->username = $username;
-			$user->password = $password;
+			$user->password = md5($password);
 			$user->save();
 
 			$responseArray['status'] 	= 200;

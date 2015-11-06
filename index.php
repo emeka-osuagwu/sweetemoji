@@ -80,7 +80,7 @@ $app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController
 /*
 | login
 */
-$app->get('/auth/login', function () use ($authController){
+$app->post('/auth/login', function () use ($authController){
     $authController->login();
 });
 
@@ -88,7 +88,7 @@ $app->get('/auth/login', function () use ($authController){
 /*
 | logout
 */
-$app->get('/auth/logout', $authenticated, function () use ($authController){
+$app->post('/auth/logout', $authenticated, function () use ($authController){
     $authController->logout();
 });
 
