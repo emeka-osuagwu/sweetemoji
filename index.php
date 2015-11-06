@@ -33,7 +33,6 @@ $app->get('/', function (){
 
 /*
 | "/emojis" get all emoji from the database
-| GET method
 */
 $app->get('/emojis', function () use ($emojiController){
     $emojiController->all();
@@ -42,16 +41,14 @@ $app->get('/emojis', function () use ($emojiController){
 
 /*
 | "/emojis" create new emoji
-| PUT method
 */
-$app->post('/emojis', $authenticated, $authenticated, function () use ($emojiController){
+$app->post('/emojis', $authenticated, function () use ($emojiController){
     $emojiController->addEmoji();
 });
 
 
 /*
-| "/emojis" create new emoji
-| PATCH method
+| "/emojis" update emoji
 */
 $app->put('/emojis/:id', $authenticated, function ($id) use ($emojiController){
     $emojiController->updateEmoji($id);

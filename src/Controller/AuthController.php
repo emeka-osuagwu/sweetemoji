@@ -69,12 +69,10 @@ class AuthController
 				"token"		=> $encode_jwt,
 				"status" 	=> 200
 			];
-
 			$response->status(200);
 			$response->body(json_encode($responseArray));
 			return $response;
 		}
-
 		else 
 		{
 			return Auth::deny_access("Incorrect Authentication Details");
