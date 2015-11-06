@@ -62,7 +62,7 @@ $app->post('/emojis/:id', $authenticated, function ($id) use ($emojiController){
 | "/emojis" find an emoji by id
 | POST method
 */
-$app->post('/emojis/:id', function ($id) use ($emojiController){
+$app->get('/emojis/:id', function ($id) use ($emojiController){
     $emojiController->findEmoji($id);
 });
 
@@ -80,7 +80,7 @@ $app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController
 /*
 | login
 */
-$app->post('/auth/login', function () use ($authController){
+$app->get('/auth/login', function () use ($authController){
     $authController->login();
 });
 
