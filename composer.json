@@ -27,7 +27,8 @@
     "require-dev": 
     {
         "phpunit/phpunit" : "4.8",
-        "mockery/mockery": "0.9.4"
+        "mockery/mockery": "0.9.4",
+         "phpspec/phpspec": "~2.0"
     },
     "autoload": 
     {
@@ -43,6 +44,9 @@
         "psr-4": {
             "Emeka\\Sweetemoji\\Tests\\": "spec/"
         }
+    },
+    "config": {
+        "bin-dir": "bin"
     },
     "scripts": 
     {
