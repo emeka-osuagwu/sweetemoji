@@ -56,7 +56,7 @@ class AuthController
 		if( $database_user['password'] == md5($password) ) 
 		{
 
-			$key 	= "example_key";
+			$key 	= $this->config->jwt_key();
 			$token 	= 
 			[
 				"nbf"	=> $this->config->jwt_nbf(),
