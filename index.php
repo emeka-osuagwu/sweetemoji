@@ -68,7 +68,7 @@ $app->get('/emojis/:id', function ($id) use ($emojiController){
 | "/emojis/:id" find and delete an emoji by id
 | DELETE method
 */
-$app->delete('/emojis/:id', $authenticated, function ($id) use ($emojiController){
+$app->delete('/emojis/:id', function ($id) use ($emojiController){
     $emojiController->deleteEmoji($id);
 });
 

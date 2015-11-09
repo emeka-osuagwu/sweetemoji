@@ -45,7 +45,7 @@ class EmojiController
 
 	public function deleteEmoji($id)
 	{
-		$app = Slim::getInstance();
+		$app = $this->app;
 		$response = $app->response();
 		$response->headers->set('Content-Type', 'application/json');
 
@@ -64,7 +64,7 @@ class EmojiController
 
 	public function all()
 	{
-		$app = Slim::getInstance();
+		$app = $this->app;
 		$response = $app->response();
 		$response->headers->set('Content-Type', 'application/json');
 		echo Emoji::all();
