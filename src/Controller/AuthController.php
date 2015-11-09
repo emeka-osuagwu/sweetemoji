@@ -10,12 +10,15 @@ use Emeka\ORM\Exceptions\ModelNotFoundException;
 
 class AuthController
 {
-
 	public function __construct($app)
 	{
 		$this->app = $app;
 	}
 
+	/*
+	| Method Login
+	| login's in user and generate a token on login
+	*/
 	public function login()
 	{
 		$response = $this->app->response();
@@ -79,6 +82,11 @@ class AuthController
 		}
 	}
 	
+
+	/*
+	| Method Logout
+	| logout's in user 
+	*/
 	public function logout()
 	{
 		$app = Slim::getInstance();
@@ -90,12 +98,9 @@ class AuthController
 		$user->token = "";
 		$user->token_expire = "";
 		$user->save();
-
 		$responseArray['message'] = "User is successfully logged out";
-
 		$response->status(200);
 		$response->body(json_encode($responseArray));
-
 		return $response;
 	}
 } 

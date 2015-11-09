@@ -9,7 +9,6 @@ class User extends BaseModel
 	private static $user;
 	protected static $primaryKey = 'id';
 
-
 	public static function findByToken($token)
 	{
 		self::$user = User::where('token', $token);

@@ -10,19 +10,20 @@ use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
 use Emeka\SweetEmoji\Model\Emoji;
 use Emeka\Fetcher\Helpers\Helper;
+use Emeka\SweetEmoji\Middleware\AuthMiddleware;
 use Emeka\SweetEmoji\Exceptions\ModelNotFoundException;
-
 
 class EmojiController
 {
 	public function __construct($app)
 	{
 		$this->app = $app;
+		$this->auth = new AuthMiddleware($this->app);
 	}
-	
+
 	public function findEmoji($id)
 	{
-		$app = Slim::getInstance();
+		$app = $this->app;
 		$response = $app->response();
 		$response->headers->set('Content-Type', 'application/json');
 
@@ -51,7 +52,6 @@ class EmojiController
 
 		try 
 		{
-			Emoji::find($id);
 			Emoji::delete($id);
 			$response->body(json_encode(['message' => "Emoji with the given id has been deleted"]));
 		} 
@@ -68,57 +68,50 @@ class EmojiController
 		$app = Slim::getInstance();
 		$response = $app->response();
 		$response->headers->set('Content-Type', 'application/json');
-		echo $emojis_class = Emoji::all();
+		echo Emoji::all();
 	}
 
 	public function addEmoji()
 	{
 		$app 		= $this->app;
 		$request 	= $app->request();
-		$token 		= $request->headers->get('Authorization');
 		$tag 		= $request->params('tag');
 		$title 		= $request->params('title');
 		$image 		= $request->params('image');
 		
-		if(! isset($title)) {
+		if(! isset($title)) 
+		{
 			return Auth::deny_access("Emoji name is null");
 		}
 
-		if(! isset($image)) {
+		if(! isset($image)) 
+		{
 			return Auth::deny_access("Emoji character value is null");
 		}
 
-		if(! isset($tag)) {
+		if(! isset($tag)) 
+		{
 			return Auth::deny_access("Emoji category is null");
 		}
 
 		$response = $app->response();
 		$response->header("Content-Type", "application/json");
-		$token 			= $request->headers->get('Authorization');
-		$key 			= "example_key";
-		$decoded_jwt 	= JWT::decode($token, $key, array('HS512'));
-		$decoded_jwt 	= (object) $decoded_jwt;
-		$user 			= User::where('username', $decoded_jwt->data->username);
 
-		if (  count($user) > 0 ) 		
-		{
-			$responseArray['status'] 	= "Emoji has been successfully created";
-			$responseArray['message']	= 200; 	
-			$response->status(200);
-			$response->body(json_encode($responseArray));
-			$emoji = new Emoji;
-			$emoji->title = $title;
-			$emoji->image = $image;
-			$emoji->tag = $tag;
-			$emoji::save();
-			return $response;
-		}
-		return "Invalid User";	
+		$responseArray['status'] 	= "Emoji has been successfully created";
+		$responseArray['message']	= 200; 	
+		$response->status(200);
+		$response->body(json_encode($responseArray));
+		$emoji = new Emoji;
+		$emoji->title = $title;
+		$emoji->image = $image;
+		$emoji->tag = $tag;
+		$emoji::save();
+		return $response;
 	}
 
 	public function updateEmoji($id)
 	{
-		$app = Slim::getInstance();
+		$app = $this->app;
 		$request = $app->request();
 		$response = $app->response();
 		$response->header("Content-Type", "application/json");
@@ -126,7 +119,6 @@ class EmojiController
 		$title = $request->params('title');
 		$image = $request->params('image');
 		
-
 		try 
 		{
 			$emoji 		= new Emoji;
@@ -136,15 +128,18 @@ class EmojiController
 			{
 				$emoji->tag = $tag;
 			}
-
 			if(isset($image)) 
 			{
 				$emoji->image = $image;
 			}
-
 			if(! isset($title)) 
 			{
 				$emoji->title = $title;
+			}
+
+			if ( count($this->auth->authenticate()) < 0 ) 
+			{
+				return Auth::deny_access("Invalid User");
 			}
 
 			$emoji::save();
@@ -152,12 +147,12 @@ class EmojiController
 			$responseArray['message'] 	= "Emoji has been successfully updated";
 			$response->status(200);
 			$response->body(json_encode($responseArray));
-
-		} catch(ModelNotFoundException $e) {
+		} 
+		catch(ModelNotFoundException $e) 
+		{
 			$response->body(json_encode(['error' => 'Emoji not found for the given id']));
 			$response->status(404);
 		}
-
 		return $response;
 	}
 

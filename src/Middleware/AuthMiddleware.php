@@ -9,16 +9,15 @@ use Emeka\SweetEmoji\Model\User;
 
 class AuthMiddleware
 {
-	protected 
+	public 
 	$token,
 	$expiry,
 	$auth_user;
 	
-	public function __construct($app)
+	public function __construct( $app )
 	{
 		$this->app = $app;
 	}
-
 
 	public function authenticate()
 	{
@@ -33,12 +32,15 @@ class AuthMiddleware
 		}
 		else
 		{			
-			$token 			= $request->headers->get('Authorization');
-			$key 			= "example_key";
-			$decoded_jwt 	= JWT::decode($token, $key, array('HS512'));
-			$decoded_jwt 	= (object) $decoded_jwt;
-			$user 			= User::where('username', $decoded_jwt->data->username);
+			$key 						= "example_key";
+			$this->token 				= $request->headers->get('Authorization');
+			$decoded_jwt 				= JWT::decode($this->token, $key, array('HS512'));
+			$decoded_jwt 				= (object) $decoded_jwt;
+			$this->expiry 				= $decoded_jwt->exp;
+			$this->auth_user 			= User::where('username', $decoded_jwt->data->username);
+			$this->auth_user =  json_decode($this->auth_user, true); 
+			$this->auth_user = $this->auth_user[0];
+			return $this->auth_user['username'];
 		}
 	}
-	
 }
