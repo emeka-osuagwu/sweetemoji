@@ -6,13 +6,15 @@ use Slim\Slim;
 use Firebase\JWT\JWT;
 use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
+use Emeka\SweetEmoji\Auth\Config;
 use Emeka\ORM\Exceptions\ModelNotFoundException;
 
 class AuthController
 {
 	public function __construct($app)
 	{
-		$this->app = $app;
+		$this->app 		= $app;
+		$this->config 	= new Config;
 	}
 
 	/*
@@ -57,10 +59,10 @@ class AuthController
 			$key 	= "example_key";
 			$token 	= 
 			[
-				"nbf"	=> 1357000000,
-				"iat"	=> 1356999524,
-				"exp"	=> time() + 3600,
-				"iss"	=> $_SERVER['SERVER_NAME'],
+				"nbf"	=> $this->config->jwt_nbf(),
+				"iat"	=> $this->config->jwt_iat(),
+				"exp"	=> $this->config->jwt_exp(),
+				"iss"	=> $this->config->jwt_iss(),
 				"data"	=> 
 				[
 					"username"	=> $database_user['username']

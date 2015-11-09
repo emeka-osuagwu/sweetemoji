@@ -4,7 +4,6 @@ namespace Emeka\SweetEmoji\Controller;
 
 use Slim\Slim;
 use PDOException;
-use Firebase\JWT\JWT;
 use Slim\Http\Response;
 use Emeka\SweetEmoji\Auth\Auth;
 use Emeka\SweetEmoji\Model\User;
