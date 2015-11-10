@@ -17,36 +17,53 @@ class Config
 			$dotenv->load();
 		}
 
-		$this->jwt_key  	= getenv('key');
-		$this->jwt_nbf      = getenv('nbf');
-		$this->jwt_iat      = getenv('iat');
-		$this->jwt_exp      = getenv('exp');
-		$this->jwt_iss     	= getenv('iss');
+		$this->jwt_key  				= getenv('key');
+		$this->jwt_issuer     			= getenv('iss');
+		$this->jwt_issuer_at      		= getenv('iat');
+		$this->jwt_not_before      		= getenv('nbf');
+		$this->jwt_expiration_time      = getenv('exp');
 	}
-
-	public function jwt_iss ()
-	{
-		return $this->jwt_iss;
-	}
-
-	public function jwt_nbf ()
-	{
-		return $this->jwt_nbf;
-	}
-
-	public function jwt_iat ()
-	{
-		return $this->jwt_iat;
-	}
-
-	public function jwt_exp ()
-	{
-		return $this->jwt_exp;
-	}
-
+	
+	/*
+	| Return json web token key property 
+	*/
 	public function jwt_key ()
 	{
 		return $this->jwt_key;
+	}
+	
+
+	/*
+	| Return json web token Issuer Claim property 
+	*/
+	public function jwt_issuer ()
+	{
+		return $this->jwt_issuer;
+	}
+
+
+	/*
+	| Return json web token Issuer At property
+	*/
+	public function jwt_issuer_at ()
+	{
+		return $this->jwt_issuer_at;
+	}
+
+	/*
+	| Return json web token Not Before property
+	*/
+	public function jwt_not_before ()
+	{
+		return $this->jwt_not_before;
+	}
+
+	/*
+	| Return json web token Expiration Time property
+	*/
+	public function jwt_expiration_time ()
+	{
+		return $this->jwt_expiration_time;
 	}
 
 
