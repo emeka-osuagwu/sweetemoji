@@ -23,7 +23,6 @@ $authenticated = function () use ($authMiddleware){
     $authMiddleware->authenticate();
 };
 
-
 /*
 | Welcome page
 */
