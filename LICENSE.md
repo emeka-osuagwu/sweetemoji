@@ -1,6 +1,6 @@
 # The MIT License (MIT)
 
-Copyright (c) 2015 Chidozie Ijeomah <:chidozie.ijeomah@andela.com>
+Copyright (c) 2015 Emeka Osuagwu <:emekaosuagwuandela@gmail.com>
 
 > Permission is hereby granted, free of charge, to any person obtaining a copy
 > of this software and associated documentation files (the "Software"), to deal

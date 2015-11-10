@@ -1,6 +1,6 @@
 # Changelog
 
-All Notable changes to `NaijaEmoji` will be documented in this file
+All Notable changes to `SweetEmoji` will be documented in this file
 
 ## NEXT - YYYY-MM-DD
 
