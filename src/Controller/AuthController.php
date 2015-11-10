@@ -59,10 +59,10 @@ class AuthController
 			$key 	= $this->config->jwt_key();
 			$token 	= 
 			[
-				"nbf"	=> $this->config->jwt_nbf(),
-				"iat"	=> $this->config->jwt_iat(),
-				"exp"	=> $this->config->jwt_exp(),
-				"iss"	=> $this->config->jwt_iss(),
+				"iss"	=> $this->config->jwt_issuer(),
+				"iat"	=> $this->config->jwt_issuer_at(),
+				"nbf"	=> $this->config->jwt_not_before(),
+				"exp"	=> $this->config->jwt_expiration_time(),
 				"data"	=> 
 				[
 					"username"	=> $database_user['username']
@@ -84,7 +84,6 @@ class AuthController
 		}
 	}
 	
-
 	/*
 	| Method Logout
 	| logout's in user 

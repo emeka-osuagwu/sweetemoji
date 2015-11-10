@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/andela-cijeomah/naijaemoji.svg?branch=master)](https://travis-ci.org/andela-cijeomah/naijaemoji)
+[![Build Status](https://travis-ci.org/andela-eosuagwu/sweetemoji.svg?branch=master)](https://travis-ci.org/andela-eosuagwu/sweetemoji)
 #SweetEmoji
 SweetEmoji is RESTful API for CRUD operations on the common emojis reimagined
 for Nigerians. The API uses simple token based authentication and is developed

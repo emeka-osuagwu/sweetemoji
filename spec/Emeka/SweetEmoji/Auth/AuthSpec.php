@@ -11,4 +11,5 @@ class AuthSpec extends ObjectBehavior
     {
         $this->shouldHaveType('Emeka\SweetEmoji\Auth\Auth');
     }
+    
 }

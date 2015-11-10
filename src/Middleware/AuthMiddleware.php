@@ -38,8 +38,8 @@ class AuthMiddleware
 			$decoded_jwt 				= (object) $decoded_jwt;
 			$this->expiry 				= $decoded_jwt->exp;
 			$this->auth_user 			= User::where('username', $decoded_jwt->data->username);
-			$this->auth_user =  json_decode($this->auth_user, true); 
-			$this->auth_user = $this->auth_user[0];
+			$this->auth_user 			=  json_decode($this->auth_user, true); 
+			$this->auth_user 			= $this->auth_user[0];
 			return $this->auth_user['username'];
 		}
 	}

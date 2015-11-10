@@ -9,6 +9,7 @@ use Emeka\SweetEmoji\Model\Emoji;
 class EmojiSpec extends ObjectBehavior
 {
 	private $emoji;
+	
 	public function let()
 	{
 		$this->emoji = new Emoji;
