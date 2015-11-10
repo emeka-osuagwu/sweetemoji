@@ -47,9 +47,5 @@
     },
     "config": {
         "bin-dir": "bin"
-    },
-    "scripts": 
-    {
-        "test": "phpunit"
     }
 }
