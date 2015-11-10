@@ -25,10 +25,7 @@ composer require emeka/sweetemoji
 
 ## Usage
 
-Create mysql database with users and emojis tables. Do not forget to enable utf8-mb4 charset encoding on the database and each table.
-
-If you need help with enabling utf8-mb4, here is a [guide](https://mathiasbynens.be/notes/mysql-utf8mb4).
- 
+Navigate to ```http://sweetemoji.herokuapp.com``` to enjoying the service.
 
 ## Change log
 Please refer to [CHANGELOG](CHANGELOG.mds) file for information on what has changed recently.
