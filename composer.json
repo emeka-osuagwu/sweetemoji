@@ -22,7 +22,8 @@
         "slim/slim": "2.*",
         "vlucas/phpdotenv": "^2.0",
         "emeka/candy": "dev-master",
-        "firebase/php-jwt": "dev-master"
+        "firebase/php-jwt": "dev-master",
+        "guzzlehttp/guzzle": "^6.1"
     },
     "require-dev": 
     {
