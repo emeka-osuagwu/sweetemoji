@@ -27,8 +27,10 @@ $authenticated = function () use ($authMiddleware){
 /*
 | Welcome page
 */
-$app->get('/', function (){
-    echo "Welcome to SweetEmoji";
+$app->get('/', function () use ($emojiController){
+    //echo "Welcome to SweetEmoji";
+    $emojiController->all();
+
 });
 
 /*

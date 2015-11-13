@@ -101,9 +101,9 @@ class EmojiController
 		$response->status(200);
 		$response->body(json_encode($responseArray));
 		$emoji = new Emoji;
-		$emoji->title = $title;
-		$emoji->image = $image;
-		$emoji->tag = $tag;
+		$emoji->title 	= $title;
+		$emoji->image 	= $image;
+		$emoji->tag 	= json_encode(explode(" ", $tag));
 		$emoji::save();
 		return $response;
 	}
