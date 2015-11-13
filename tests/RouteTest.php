@@ -11,8 +11,6 @@ use PHPUnit_Framework_TestCase;
 class RoutesTest extends PHPUnit_Framework_TestCase
 {
     
-
-
     /*
     | Mock slim request route 
     */
