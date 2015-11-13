@@ -8,6 +8,7 @@ use Slim\Slim;
 use Emeka\Candy\Model\BaseModel;
 use Emeka\SweetEmoji\Model\User;
 use Emeka\SweetEmoji\Model\Emoji;
+use Emeka\SweetEmoji\Auth\Config;
 use Emeka\SweetEmoji\Controller\AuthController;
 use Emeka\SweetEmoji\Middleware\AuthMiddleware;
 use Emeka\SweetEmoji\Controller\UserController;
@@ -27,7 +28,10 @@ $authenticated = function () use ($authMiddleware){
 | Welcome page
 */
 $app->get('/', function (){
-    echo "SweetEmoji Emoji";
+    //echo "SweetEmoji Emoji";
+    $c = new Config;
+    var_dump($c);
+
 });
 
 /*
