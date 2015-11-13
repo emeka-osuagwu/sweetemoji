@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/andela-eosuagwu/sweetemoji.svg?branch=master)](https://travis-ci.org/andela-eosuagwu/sweetemoji)
+[![Build Status](https://scrutinizer-ci.com/g/andela-eosuagwu/sweetemoji/badges/build.png?b=master)](https://scrutinizer-ci.com/g/andela-eosuagwu/sweetemoji/build-status/master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/andela-eosuagwu/sweetemoji/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/andela-eosuagwu/sweetemoji/?branch=master)
 #SweetEmoji
 SweetEmoji is RESTful API for CRUD operations on the common emojis reimagined
 for Nigerians. The API uses simple token based authentication and is developed
