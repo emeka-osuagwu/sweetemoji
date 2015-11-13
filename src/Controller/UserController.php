@@ -45,7 +45,7 @@ class UserController
 			$user->save();
 
 			$responseArray['status'] 	= 200;
-			$responseArray['massage'] 	= "Registration Successful";
+			$responseArray['message'] 	= "Registration Successful";
 		}
 		$response->body(json_encode($responseArray));
 		return $response;
