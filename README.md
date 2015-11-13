@@ -13,7 +13,7 @@ for Nigerians. The API uses simple token based authentication and is developed
 
  Run this on bash to execute the tests
  ```````bash
- bin/phpspec run --format=pretty
+ phpunit
 `````````
 
 #Install
