@@ -7,7 +7,7 @@ for Nigerians. The API uses simple token based authentication and is developed
 
 
 #Testing
- The phpspec framework for testing is used to perform
+ The phpunit framework for testing is used to perform
  unit test on the classes. The TDD principle has been
  employed
 
