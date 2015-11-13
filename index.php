@@ -28,10 +28,7 @@ $authenticated = function () use ($authMiddleware){
 | Welcome page
 */
 $app->get('/', function (){
-    //echo "SweetEmoji Emoji";
-    $c = new Config;
-    var_dump($c);
-
+    echo "SweetEmoji Emoji";
 });
 
 /*
