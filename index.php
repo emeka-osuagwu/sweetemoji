@@ -28,7 +28,7 @@ $authenticated = function () use ($authMiddleware){
 | Welcome page
 */
 $app->get('/', function (){
-    echo "SweetEmoji Emoji";
+    echo "Welcome to SweetEmoji";
 });
 
 /*
