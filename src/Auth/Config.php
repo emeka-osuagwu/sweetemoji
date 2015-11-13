@@ -18,9 +18,9 @@ class Config
 		}
 
 		$this->jwt_key  				= getenv('jwt_key');
-		$this->jwt_issuer     			= getenv('jwt_iss');
-		$this->jwt_issuer_at      		= getenv('jwt_iat');
-		$this->jwt_not_before      		= getenv('jwt_nbf');
+		$this->jwt_issuer     			= getenv('jwt_issuer');
+		$this->jwt_issuer_at      		= getenv('jwt_issuer_at');
+		$this->jwt_not_before      		= getenv('jwt_not_before');
 		$this->jwt_expiration_time      = time() + 3600;
 	}
 	
